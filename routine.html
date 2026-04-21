@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Beauty Routine | Pamela's Beauty Gems</title>
+  <meta name="description" content="The complete 5-step glass skin routine with professional prep and high-tech finish. Every product tested and approved by Pamela.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       PAMELA'S BEAUTY GEMS — DESIGN SYSTEM
+       (same variables as index.html for consistency)
+       ============================================ */
+    :root {
+      --cream: #FAF5EF;
+      --ivory: #F5EDE2;
+      --nude: #E8D5C4;
+      --rose-nude: #D4A5A5;
+      --gold: #B8935A;
+      --gold-light: #D4B27A;
+      --deep-brown: #3D2817;
+      --soft-brown: #6B5444;
+      --white: #FFFFFF;
+      --black: #1A1414;
+
+      --font-serif: 'Playfair Display', serif;
+      --font-editorial: 'Cormorant Garamond', serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--deep-brown);
+      background: var(--cream);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ============================================
+       NAVIGATION (same as index)
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 245, 239, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184, 147, 90, 0.15);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--deep-brown);
+    }
+    .nav-logo span { font-style: italic; color: var(--gold); }
+
+    .nav-menu {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--deep-brown);
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu a.active { color: var(--gold); }
+    .nav-menu a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 100%; height: 1px;
+      background: var(--gold);
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .nav-menu a:hover { color: var(--gold); }
+    .nav-menu a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--deep-brown);
+      color: var(--cream) !important;
+      padding: 0.7rem 1.5rem;
+      border-radius: 2px;
+      letter-spacing: 0.12em !important;
+      font-size: 0.75rem !important;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--white) !important; }
+    .nav-cta::after { display: none !important; }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .nav-toggle span {
+      width: 24px; height: 1px;
+      background: var(--deep-brown);
+    }
+
+    /* ============================================
+       PAGE HERO
+       ============================================ */
+    .page-hero {
+      padding: 10rem 2rem 5rem;
+      text-align: center;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--ivory) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 30%; left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(212, 165, 165, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .page-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--deep-brown);
+      margin-bottom: 1.5rem;
+    }
+
+    .page-title em {
+      font-style: italic;
+      color: var(--gold);
+      font-family: var(--font-editorial);
+      font-weight: 300;
+    }
+
+    .page-subtitle {
+      font-family: var(--font-editorial);
+      font-size: 1.4rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--soft-brown);
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .page-description {
+      font-size: 1rem;
+      color: var(--soft-brown);
+      line-height: 1.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ============================================
+       RITUAL INTRO (editorial paragraph)
+       ============================================ */
+    .ritual-intro {
+      padding: 6rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .ritual-intro-quote {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--deep-brown);
+      line-height: 1.6;
+      position: relative;
+      padding: 0 2rem;
+    }
+
+    .ritual-intro-quote::before,
+    .ritual-intro-quote::after {
+      content: '"';
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      color: var(--gold);
+      position: absolute;
+      line-height: 1;
+    }
+    .ritual-intro-quote::before { top: -1rem; left: 0; }
+    .ritual-intro-quote::after { bottom: -2rem; right: 0; }
+
+    /* ============================================
+       STEPS SECTION
+       ============================================ */
+    .steps-section {
+      padding: 4rem 2rem 8rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-bottom: 8rem;
+      position: relative;
+    }
+
+    .step:nth-child(even) {
+      direction: rtl;
+    }
+    .step:nth-child(even) > * {
+      direction: ltr;
+    }
+
+    .step-image-wrapper {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      border-radius: 4px;
+      background: var(--ivory);
+    }
+
+    .step-image-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(184, 147, 90, 0.05) 0%, rgba(212, 165, 165, 0.08) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .step-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .step-image-wrapper:hover img { transform: scale(1.04); }
+
+    .step-number-badge {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: 1.8rem;
+      color: var(--cream);
+      background: rgba(61, 40, 23, 0.85);
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      backdrop-filter: blur(8px);
+      z-index: 2;
+      letter-spacing: 0.05em;
+    }
+
+    .step-content { padding: 1rem 0; }
+
+    .step-category {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .step-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--deep-brown);
+      margin-bottom: 1rem;
+    }
+
+    .step-title em {
+      font-style: italic;
+      color: var(--gold);
+      font-family: var(--font-editorial);
+    }
+
+    .step-product {
+      font-family: var(--font-editorial);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--soft-brown);
+      margin-bottom: 1.5rem;
+    }
+
+    .step-description {
+      color: var(--soft-brown);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .step-testimonial {
+      background: var(--ivory);
+      padding: 1.8rem;
+      border-left: 3px solid var(--gold);
+      margin-bottom: 2rem;
+      border-radius: 2px;
+    }
+
+    .step-testimonial-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 500;
+      color: var(--deep-brown);
+      margin-bottom: 0.8rem;
+      font-size: 1.05rem;
+    }
+
+    .step-testimonial-text {
+      font-size: 0.9rem;
+      color: var(--soft-brown);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .step-testimonial-author {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .step-button {
+      display: inline-block;
+      padding: 1rem 2.2rem;
+      background: var(--deep-brown);
+      color: var(--cream);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .step-button:hover {
+      background: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(184, 147, 90, 0.3);
+    }
+
+    /* ============================================
+       DIVIDER (between sections)
+       ============================================ */
+    .divider {
+      max-width: 1200px;
+      margin: 5rem auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    .divider-text {
+      display: inline-block;
+      background: var(--cream);
+      padding: 0 2rem;
+      position: relative;
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    /* ============================================
+       TECH SECTION (special dark section)
+       ============================================ */
+    .tech-section {
+      background: var(--deep-brown);
+      color: var(--cream);
+      padding: 8rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tech-section::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -20%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(184, 147, 90, 0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .tech-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tech-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .tech-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.2rem;
+    }
+
+    .tech-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .tech-title em {
+      font-style: italic;
+      color: var(--gold-light);
+      font-family: var(--font-editorial);
+    }
+
+    .tech-subtitle {
+      font-family: var(--font-editorial);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: rgba(245, 237, 226, 0.8);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .tech-image-wrapper {
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 4px;
+      background: var(--cream);
+      position: relative;
+    }
+
+    .tech-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tech-content h3 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .tech-content h3 em {
+      font-style: italic;
+      color: var(--gold-light);
+      font-family: var(--font-editorial);
+    }
+
+    .tech-product-name {
+      font-family: var(--font-editorial);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-description {
+      color: rgba(245, 237, 226, 0.85);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .tech-testimonial {
+      background: rgba(245, 237, 226, 0.08);
+      padding: 1.8rem;
+      border-left: 3px solid var(--gold-light);
+      margin-bottom: 2rem;
+      border-radius: 2px;
+    }
+
+    .tech-testimonial-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 0.8rem;
+      font-size: 1.05rem;
+    }
+
+    .tech-testimonial-text {
+      font-size: 0.9rem;
+      color: rgba(245, 237, 226, 0.8);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .tech-testimonial-author {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    .tech-button {
+      display: inline-block;
+      padding: 1rem 2.2rem;
+      background: var(--gold);
+      color: var(--cream);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .tech-button:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================
+       FINAL CTA
+       ============================================ */
+    .final-cta {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: var(--ivory);
+    }
+
+    .final-cta-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .final-cta h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: var(--deep-brown);
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+    }
+
+    .final-cta h2 em {
+      font-style: italic;
+      color: var(--gold);
+      font-family: var(--font-editorial);
+    }
+
+    .final-cta p {
+      font-family: var(--font-editorial);
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--soft-brown);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background: var(--cream);
+      padding: 4rem 2rem 2rem;
+      border-top: 1px solid rgba(184, 147, 90, 0.2);
+    }
+
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: var(--deep-brown);
+    }
+    .footer-brand h3 span { font-style: italic; color: var(--gold); }
+    .footer-brand p {
+      color: var(--soft-brown);
+      font-size: 0.9rem;
+      max-width: 320px;
+      line-height: 1.7;
+    }
+
+    .footer-column h4 {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+    .footer-column ul { list-style: none; }
+    .footer-column li { margin-bottom: 0.7rem; }
+    .footer-column a {
+      font-size: 0.9rem;
+      color: var(--soft-brown);
+      transition: color 0.3s ease;
+    }
+    .footer-column a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(184, 147, 90, 0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: var(--soft-brown);
+    }
+    .footer-disclaimer {
+      font-size: 0.75rem;
+      color: var(--soft-brown);
+      font-style: italic;
+      max-width: 500px;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 1024px) {
+      .step { gap: 3rem; }
+      .footer-container { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-menu.active {
+        display: flex;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: var(--cream);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid rgba(184, 147, 90, 0.2);
+      }
+
+      .page-hero { padding: 8rem 1.5rem 4rem; }
+
+      .step {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 5rem;
+      }
+      .step:nth-child(even) { direction: ltr; }
+
+      .tech-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+      .ritual-intro { padding: 4rem 1.5rem; }
+      .steps-section { padding: 2rem 1.5rem 5rem; }
+      .tech-section { padding: 5rem 1.5rem; }
+      .final-cta { padding: 5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Pamela's <span>Beauty</span> Gems</a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="routine.html" class="active">Beauty Routine</a></li>
+        <li><a href="amazon-finds.html">Amazon Finds</a></li>
+        <li><a href="boyfriend-finds.html">Boyfriend's Picks</a></li>
+        <li><a href="https://www.amazon.com/shop/influencer-0522aeb1?ref_=cm_sw_r_cp_ud_aipsfshop_0G0ZXW45WKN1PTJDD40Y_1" target="_blank" rel="noopener" class="nav-cta">Shop Storefront</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       PAGE HERO
+       ============================================ -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="page-eyebrow">The Complete Ritual</div>
+      <h1 class="page-title">The <em>Glass Skin</em> Routine</h1>
+      <p class="page-subtitle">Five proven steps, two high-tech tools, endless glow.</p>
+      <p class="page-description">
+        Achieving that coveted glass skin finish isn't about one miracle product — it's about the layers. Whether you're building a professional-grade ritual or hunting the best drugstore gems, this is the system that transforms skin texture and delivers the signature glow.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       RITUAL INTRO QUOTE
+       ============================================ -->
+  <section class="ritual-intro">
+    <p class="ritual-intro-quote">
+      This isn't just a list — it's a proven system backed by real testimonies from people who have transformed their skin texture and glow.
+    </p>
+  </section>
+
+  <!-- ============================================
+       STEPS SECTION
+       ============================================ -->
+  <section class="steps-section">
+
+    <!-- ========== STEP 0: THE PREP ========== -->
+    <div class="step">
+      <div class="step-image-wrapper">
+        <div class="step-number-badge">00</div>
+        <img src="https://images.squarespace-cdn.com/content/v1/69cb39987853445ea26a467f/19b76f75-c15b-4a03-87c5-e55748980881/61BNeAUfHUL._AC_SL1500_.jpg" alt="Nanosteamer Facial Steamer">
+      </div>
+      <div class="step-content">
+        <div class="step-category">The Professional Prep</div>
+        <h2 class="step-title">Open the <em>Canvas</em></h2>
+        <p class="step-product">Nanosteamer Facial Steamer with Ionic Technology</p>
+        <p class="step-description">
+          Before applying any product, this steamer creates nano-ionic steam up to 10 times more effective at penetrating the skin. It opens your pores and softens the skin, making it the perfect time to use the included blackhead remover tools if you need a deeper extraction before your ritual.
+        </p>
+        <a href="https://amzn.to/3PJvsoY" target="_blank" rel="noopener" class="step-button">Shop on Amazon →</a>
+      </div>
+    </div>
+
+    <!-- ========== STEP 1: CLEANSE ========== -->
+    <div class="step">
+      <div class="step-image-wrapper">
+        <div class="step-number-badge">01</div>
+        <img src="https://images.squarespace-cdn.com/content/v1/69cb39987853445ea26a467f/7809e5ee-c80a-4943-b9a5-381fe2b1de34/711nzQC6tyL._SL1500_.jpg" alt="Beauty of Joseon Radiance Cleansing Balm">
+      </div>
+      <div class="step-content">
+        <div class="step-category">Step One · The Gentle Cleanse</div>
+        <h2 class="step-title">Melt the <em>Day</em> Away</h2>
+        <p class="step-product">Beauty Of Joseon Radiance Cleansing Balm</p>
+        <p class="step-description">
+          The perfect first step for removing makeup and impurities without stripping the skin. A sherbet-like texture that melts into oil on contact, emulsifies cleanly with water, and leaves the face soft and prepped for treatments.
+        </p>
+        <div class="step-testimonial">
+          <p class="step-testimonial-title">My search finally stopped here ❤️</p>
+          <p class="step-testimonial-text">
+            "I've struggled for years with dry, reactive skin that breaks out the second I use anything too oily or heavy. This is a total game-changer. It takes off even my most stubborn waterproof mascara with zero irritation, and my skin feels fresh and hydrated — never stripped. Already on my 3rd tub."
+          </p>
+          <p class="step-testimonial-author">— Mitchell Goodwin</p>
+        </div>
+        <a href="https://amzn.to/4bWu3m7" target="_blank" rel="noopener" class="step-button">Shop on Amazon →</a>
+      </div>
+    </div>
+
+    <!-- ========== STEP 2: TONE ========== -->
+    <div class="step">
+      <div class="step-image-wrapper">
+        <div class="step-number-badge">02</div>
+        <img src="https://images.squarespace-cdn.com/content/v1/69cb39987853445ea26a467f/708cce67-442b-4000-bb24-73ddac952656/712wYYlQegL._SL1500_.jpg" alt="Anua Heartleaf 77 Soothing Toner">
+      </div>
+      <div class="step-content">
+        <div class="step-category">Step Two · The Skin Prep</div>
+        <h2 class="step-title">Calm & <em>Balance</em></h2>
+        <p class="step-product">Anua Heartleaf 77 Soothing Toner</p>
+        <p class="step-description">
+          A must-have for calming redness and balancing the skin's pH. Watery, cooling, and versatile enough to work for almost any skin type. Pat on three layers for that true, hydrated glass finish.
+        </p>
+        <div class="step-testimonial">
+          <p class="step-testimonial-title">The only thing that actually calms my angry skin</p>
+          <p class="step-testimonial-text">
+            "I have rosacea and super sensitive skin that usually turns bright red after washing. Most toners sting. This one feels incredibly cooling — after two weeks, the constant redness on my cheeks has visibly dialed down. If you have angry skin that won't calm down, you need this."
+          </p>
+          <p class="step-testimonial-author">— Elena Vasquez</p>
+        </div>
+        <a href="https://amzn.to/4v5Vjrd" target="_blank" rel="noopener" class="step-button">Shop on Amazon →</a>
+      </div>
+    </div>
+
+    <!-- ========== STEP 3: TREAT ========== -->
+    <div class="step">
+      <div class="step-image-wrapper">
+        <div class="step-number-badge">03</div>
+        <img src="https://images.squarespace-cdn.com/content/v1/69cb39987853445ea26a467f/68374710-2b8d-4ac5-a0e0-23d65719211b/71JnpVVoAnL._AC_SL1500_.jpg" alt="Lancôme Clarifique Pro-Solution Face Serum">
+      </div>
+      <div class="step-content">
+        <div class="step-category">Step Three · The Glow Treatment</div>
+        <h2 class="step-title">Refine & <em>Clarify</em></h2>
+        <p class="step-product">Lancôme Clarifique Pro-Solution Face Serum</p>
+        <p class="step-description">
+          The bridge in the ritual — gently exfoliating and refining texture with glycolic acid to reach that high-clarity, lit-from-within finish. Watery, lightweight, and perfect for layering.
+        </p>
+        <div class="step-testimonial">
+          <p class="step-testimonial-title">Expensive, but the results speak for themselves</p>
+          <p class="step-testimonial-text">
+            "This is the first serum that actually smoothed out my skin texture without causing a breakout. After three weeks, my post-acne marks were significantly lighter and my skin had this lit-from-within glow. If you're looking to invest in one product to fix dullness, this is the one."
+          </p>
+          <p class="step-testimonial-author">— Mariella Wilkinson</p>
+        </div>
+        <a href="https://amzn.to/3NUWBEM" target="_blank" rel="noopener" class="step-button">Shop on Amazon →</a>
+      </div>
+    </div>
+
+    <!-- ========== STEP 4: MOISTURIZE AM ========== -->
+    <div class="step">
+      <div class="step-image-wrapper">
+        <div class="step-number-badge">04</div>
+        <img src="https://images.squarespace-cdn.com/content/v1/69cb39987853445ea26a467f/c7696796-2db8-4944-8e70-1c9a92f9bf25/71LBRTtTY1L._SL1500_.jpg" alt="CeraVe AM Facial Moisturizing Lotion with Sunscreen">
+      </div>
+      <div class="step-content">
+        <div class="step-category">Step Four · The Daily Hydrator (AM)</div>
+        <h2 class="step-title">Protect & <em>Plump</em></h2>
+        <p class="step-product">CeraVe AM Facial Moisturizing Lotion with SPF 30</p>
+        <p class="step-description">
+          An essential 2-in-1 that keeps skin hydrated with ceramides and protected from sun damage with SPF 30 all day. The drugstore gem that sits under makeup like a dream — no white cast, no pilling.
+        </p>
+        <div class="step-testimonial">
+          <p class="step-testimonial-title">The ultimate morning multitasker</p>
+          <p class="step-testimonial-text">
+            "I've been using this religiously for over three years. It gives the right amount of moisture without feeling heavy, plays beautifully with makeup, and contains niacinamide to calm redness. Simple, affordable, and it just works."
+          </p>
+          <p class="step-testimonial-author">— Jennifer Gomez</p>
+        </div>
+        <a href="https://amzn.to/4t5ui61" target="_blank" rel="noopener" class="step-button">Shop on Amazon →</a>
+      </div>
+    </div>
+
+    <!-- ========== STEP 5: OVERNIGHT ========== -->
+    <div class="step">
+      <div class="step-image-wrapper">
+        <div class="step-number-badge">05</div>
+        <img src="https://images.squarespace-cdn.com/content/v1/69cb39987853445ea26a467f/b5ef858b-9db3-45b7-987b-b596ec412a6b/81drpcNWHFL._SL1500_.jpg" alt="Medicube Collagen Overnight Peel Off Mask">
+      </div>
+      <div class="step-content">
+        <div class="step-category">Step Five · The Overnight Secret</div>
+        <h2 class="step-title">Wake Up <em>Glowing</em></h2>
+        <p class="step-product">Medicube Collagen Overnight Peel Off Mask</p>
+        <p class="step-description">
+          The professional-grade finish that takes the ritual to the next level. A cooling jelly that dries into a clear film overnight, locking in every serum and revealing plump, firm, glass-like skin by morning.
+        </p>
+        <div class="step-testimonial">
+          <p class="step-testimonial-title">Like a professional facial while I sleep</p>
+          <p class="step-testimonial-text">
+            "It goes on like a cooling jelly and dries into a thin film — no mess on my pillows. When I peel it off in the morning, my skin feels incredibly plump and has that literal 'glass' shine I usually only get from a professional facial. My favorite step for waking up refreshed."
+          </p>
+          <p class="step-testimonial-author">— Pamela Rodriguez</p>
+        </div>
+        <a href="https://amzn.to/4dWZKOM" target="_blank" rel="noopener" class="step-button">Shop on Amazon →</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================================
+       DIVIDER
+       ============================================ -->
+  <div class="divider">
+    <span class="divider-text">The High-Tech Finish</span>
+  </div>
+
+  <!-- ============================================
+       TECH SECTION (dark luxury)
+       ============================================ -->
+  <section class="tech-section">
+    <div class="tech-container">
+
+      <div class="tech-header">
+        <div class="tech-eyebrow">Beyond The Basics</div>
+        <h2 class="tech-title">Level Up Your <em>Glow</em></h2>
+        <p class="tech-subtitle">For the days you want your serums to work harder — and your results to show faster.</p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-image-wrapper">
+          <img src="https://images.squarespace-cdn.com/content/v1/69cb39987853445ea26a467f/f1b1d840-2a76-4aa8-869a-498f9e37689e/713aWNxNwML._AC_SL1500_.jpg" alt="Medicube Age-R Booster Pro">
+        </div>
+
+        <div class="tech-content">
+          <h3>The <em>6-in-1</em> Device Celebrities Swear By</h3>
+          <p class="tech-product-name">Medicube Age-R Booster Pro</p>
+          <p class="tech-description">
+            Use it right after applying your Lancôme serum. This device uses electroporation to create temporary pathways in the skin, allowing active ingredients to absorb much more deeply than with your hands alone. Booster mode for absorption, Derma Shot mode for contour — the finish that transforms the ritual into a results system.
+          </p>
+
+          <div class="tech-testimonial">
+            <p class="tech-testimonial-title">I always feel the most hydrated and glowy after I use this</p>
+            <p class="tech-testimonial-text">
+              "I really like to start with the Booster Mode to help absorb all my products. Now I'm using Derma Shot Mode to give me a really nice contour. I always feel the most hydrated and glowy after I use this — ready for my day."
+            </p>
+            <p class="tech-testimonial-author">— Kylie Jenner</p>
+          </div>
+
+          <a href="https://amzn.to/3PLHoX9" target="_blank" rel="noopener" class="tech-button">Shop on Amazon →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       FINAL CTA
+       ============================================ -->
+  <section class="final-cta">
+    <div class="final-cta-content">
+      <h2>Ready to Start Your <em>Ritual</em>?</h2>
+      <p>Every product, one place. Shop the complete collection on my Amazon storefront.</p>
+      <a href="https://www.amazon.com/shop/influencer-0522aeb1/list/122N5U1CYUK1?ref_=aip_sf_list_spv_ons_mixed_d" target="_blank" rel="noopener" class="step-button">Shop the Complete Ritual →</a>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-brand">
+        <h3>Pamela's <span>Beauty</span> Gems</h3>
+        <p>A curated edit of luxury and drugstore beauty, tested and trusted. Your signature glow, one gem at a time.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="routine.html">Beauty Routine</a></li>
+          <li><a href="amazon-finds.html">Amazon Finds</a></li>
+          <li><a href="boyfriend-finds.html">Boyfriend's Picks</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="https://www.amazon.com/shop/influencer-0522aeb1?ref_=cm_sw_r_cp_ud_aipsfshop_0G0ZXW45WKN1PTJDD40Y_1" target="_blank" rel="noopener">Amazon Storefront</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Pinterest</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">About Pamela</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Pamela's Beauty Gems. All rights reserved.</p>
+      <p class="footer-disclaimer">As an Amazon Associate I earn from qualifying purchases.</p>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       JAVASCRIPT
+       ============================================ -->
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.style.boxShadow = '0 2px 20px rgba(61, 40, 23, 0.08)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
