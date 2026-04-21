@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pamela's Beauty Gems | Curated Amazon Beauty Finds</title>
+  <meta name="description" content="From luxury skincare to viral drugstore gems. Pamela curates only the beauty products that deliver real results.">
+
+  <!-- Google Fonts: Playfair Display (elegant serif) + Inter (clean sans) + Cormorant (editorial accent) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       PAMELA'S BEAUTY GEMS — DESIGN SYSTEM
+       Palette: Nude & Gold with Rose accents
+       ============================================ */
+    :root {
+      --cream: #FAF5EF;          /* background base */
+      --ivory: #F5EDE2;          /* soft cards */
+      --nude: #E8D5C4;           /* warm nude */
+      --rose-nude: #D4A5A5;      /* rose accent */
+      --gold: #B8935A;           /* luxury gold */
+      --gold-light: #D4B27A;     /* soft gold */
+      --deep-brown: #3D2817;     /* text dark */
+      --soft-brown: #6B5444;     /* text secondary */
+      --white: #FFFFFF;
+      --black: #1A1414;
+
+      --font-serif: 'Playfair Display', serif;
+      --font-editorial: 'Cormorant Garamond', serif;
+      --font-sans: 'Inter', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--deep-brown);
+      background: var(--cream);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(250, 245, 239, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184, 147, 90, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--deep-brown);
+    }
+
+    .nav-logo span {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--deep-brown);
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .nav-menu a:hover { color: var(--gold); }
+    .nav-menu a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--deep-brown);
+      color: var(--cream) !important;
+      padding: 0.7rem 1.5rem;
+      border-radius: 2px;
+      letter-spacing: 0.12em !important;
+      font-size: 0.75rem !important;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--white) !important;
+    }
+    .nav-cta::after { display: none !important; }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .nav-toggle span {
+      width: 24px;
+      height: 1px;
+      background: var(--deep-brown);
+      transition: all 0.3s ease;
+    }
+
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding-top: 80px;
+      background: linear-gradient(135deg, var(--cream) 0%, var(--ivory) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212, 165, 165, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      padding: 4rem 5rem;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1;
+      color: var(--deep-brown);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+      font-family: var(--font-editorial);
+      font-weight: 300;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-editorial);
+      font-size: 1.4rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--soft-brown);
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      color: var(--soft-brown);
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--deep-brown);
+      color: var(--cream);
+    }
+    .btn-primary:hover {
+      background: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(184, 147, 90, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--deep-brown);
+      border: 1px solid var(--deep-brown);
+    }
+    .btn-secondary:hover {
+      background: var(--deep-brown);
+      color: var(--cream);
+    }
+
+    .hero-image {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--cream) 0%, transparent 15%);
+      pointer-events: none;
+    }
+
+    /* ============================================
+       SECTION COMMON
+       ============================================ */
+    .section {
+      padding: 8rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: var(--deep-brown);
+      margin-bottom: 1.2rem;
+      line-height: 1.1;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold);
+      font-family: var(--font-editorial);
+    }
+
+    .section-subtitle {
+      font-family: var(--font-editorial);
+      font-size: 1.2rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--soft-brown);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ============================================
+       THE THREE COLLECTIONS (main feature)
+       ============================================ */
+    .collections {
+      background: var(--white);
+    }
+
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+
+    .collection-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      background: var(--ivory);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .collection-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(61, 40, 23, 0.15);
+    }
+
+    .collection-image {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+
+    .collection-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .collection-card:hover .collection-image img {
+      transform: scale(1.05);
+    }
+
+    .collection-number {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      font-family: var(--font-editorial);
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--white);
+      background: rgba(61, 40, 23, 0.7);
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      backdrop-filter: blur(8px);
+    }
+
+    .collection-content {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .collection-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--deep-brown);
+      margin-bottom: 0.8rem;
+    }
+
+    .collection-description {
+      font-size: 0.95rem;
+      color: var(--soft-brown);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .collection-link {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.3s ease;
+    }
+
+    .collection-card:hover .collection-link {
+      gap: 1rem;
+    }
+
+    /* ============================================
+       PHILOSOPHY / ABOUT STRIP
+       ============================================ */
+    .philosophy {
+      background: var(--ivory);
+      text-align: center;
+      padding: 7rem 2rem;
+    }
+
+    .philosophy-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .philosophy-quote {
+      font-family: var(--font-editorial);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--deep-brown);
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+
+    .philosophy-signature {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    /* ============================================
+       FEATURED / INSTAGRAM GRID
+       ============================================ */
+    .featured {
+      padding: 6rem 0 0 0;
+      max-width: 100%;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+    }
+
+    .featured-item {
+      aspect-ratio: 1;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .featured-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .featured-item:hover img {
+      transform: scale(1.08);
+    }
+
+    /* ============================================
+       NEWSLETTER
+       ============================================ */
+    .newsletter {
+      background: var(--deep-brown);
+      color: var(--cream);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .newsletter-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .newsletter .section-eyebrow {
+      color: var(--gold-light);
+    }
+
+    .newsletter-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: var(--cream);
+    }
+
+    .newsletter-title em {
+      font-style: italic;
+      color: var(--gold-light);
+      font-family: var(--font-editorial);
+    }
+
+    .newsletter-description {
+      font-family: var(--font-editorial);
+      font-size: 1.15rem;
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      color: rgba(245, 237, 226, 0.85);
+    }
+
+    /* === MAILCHIMP FORM PLACEHOLDER ===
+       Yerdi: when you get your Mailchimp code, replace this entire form
+       with the <form> code Mailchimp gives you. Keep the class "newsletter-form"
+       on the outer form for styling.
+    */
+    .newsletter-form {
+      display: flex;
+      gap: 0.8rem;
+      max-width: 480px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .newsletter-form input[type="email"] {
+      flex: 1;
+      min-width: 220px;
+      padding: 1rem 1.2rem;
+      background: transparent;
+      border: 1px solid rgba(245, 237, 226, 0.3);
+      border-radius: 2px;
+      color: var(--cream);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .newsletter-form input[type="email"]::placeholder {
+      color: rgba(245, 237, 226, 0.5);
+    }
+
+    .newsletter-form input[type="email"]:focus {
+      outline: none;
+      border-color: var(--gold-light);
+    }
+
+    .newsletter-form button {
+      padding: 1rem 2rem;
+      background: var(--gold);
+      color: var(--cream);
+      border: none;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--gold-light);
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background: var(--cream);
+      padding: 4rem 2rem 2rem;
+      border-top: 1px solid rgba(184, 147, 90, 0.2);
+    }
+
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: var(--deep-brown);
+    }
+
+    .footer-brand h3 span {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .footer-brand p {
+      color: var(--soft-brown);
+      font-size: 0.9rem;
+      max-width: 320px;
+      line-height: 1.7;
+    }
+
+    .footer-column h4 {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-column a {
+      font-size: 0.9rem;
+      color: var(--soft-brown);
+      transition: color 0.3s ease;
+    }
+
+    .footer-column a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(184, 147, 90, 0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: var(--soft-brown);
+    }
+
+    .footer-disclaimer {
+      font-size: 0.75rem;
+      color: var(--soft-brown);
+      font-style: italic;
+      max-width: 500px;
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 1024px) {
+      .collections-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .featured-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-container { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-menu.active {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--cream);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid rgba(184, 147, 90, 0.2);
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-content {
+        padding: 3rem 1.5rem;
+        order: 2;
+      }
+      .hero-image {
+        height: 60vh;
+        order: 1;
+      }
+      .hero-image::after {
+        background: linear-gradient(to bottom, transparent 80%, var(--cream) 100%);
+      }
+
+      .section { padding: 5rem 1.5rem; }
+      .philosophy { padding: 5rem 1.5rem; }
+      .featured-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-container { grid-template-columns: 1fr; gap: 2rem; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form input[type="email"] { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Pamela's <span>Beauty</span> Gems</a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="routine.html">Beauty Routine</a></li>
+        <li><a href="amazon-finds.html">Amazon Finds</a></li>
+        <li><a href="boyfriend-finds.html">Boyfriend's Picks</a></li>
+        <li><a href="https://www.amazon.com/shop/influencer-0522aeb1?ref_=cm_sw_r_cp_ud_aipsfshop_0G0ZXW45WKN1PTJDD40Y_1" target="_blank" rel="noopener" class="nav-cta">Shop Storefront</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Curated Beauty Edit</div>
+      <h1 class="hero-title">Your Signature <em>Glow</em> Starts Here</h1>
+      <p class="hero-subtitle">From luxury skincare to viral drugstore gems — only the products that truly deliver.</p>
+      <p class="hero-description">
+        I've spent years testing thousands of products so you don't have to. My mission is simple: bridge the gap between luxury performance and affordable discovery.
+      </p>
+      <div class="hero-buttons">
+        <a href="routine.html" class="btn btn-primary">Explore the Routine</a>
+        <a href="amazon-finds.html" class="btn btn-secondary">Shop the Gems</a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <!-- Yerdi: Replace this URL with your own hero image hosted on postimg.cc or GitHub -->
+      <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=1200&q=80" alt="Beauty products flat lay">
+    </div>
+  </section>
+
+  <!-- ============================================
+       THE THREE COLLECTIONS
+       ============================================ -->
+  <section class="section collections">
+    <div class="section-header">
+      <div class="section-eyebrow">The Collections</div>
+      <h2 class="section-title">Three Edits, <em>Endless</em> Glow</h2>
+      <p class="section-subtitle">Every product tested, every recommendation earned. Discover my curated world.</p>
+    </div>
+
+    <div class="collections-grid">
+
+      <!-- Collection 1: Beauty Routine -->
+      <a href="routine.html" class="collection-card">
+        <div class="collection-image">
+          <div class="collection-number">01</div>
+          <!-- Replace image URL with your own -->
+          <img src="https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=800&q=80" alt="Beauty routine products">
+        </div>
+        <div class="collection-content">
+          <h3 class="collection-title">Beauty Routine</h3>
+          <p class="collection-description">
+            Step by step, from cleanse to glow. My complete skincare system with every product that earned its place.
+          </p>
+          <span class="collection-link">Discover the ritual →</span>
+        </div>
+      </a>
+
+      <!-- Collection 2: Amazon Beauty Finds -->
+      <a href="amazon-finds.html" class="collection-card">
+        <div class="collection-image">
+          <div class="collection-number">02</div>
+          <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80" alt="Amazon beauty finds">
+        </div>
+        <div class="collection-content">
+          <h3 class="collection-title">Amazon Beauty Finds</h3>
+          <p class="collection-description">
+            The viral icons and hidden gems worth every click. Luxury performance, accessible prices, real results.
+          </p>
+          <span class="collection-link">Shop the finds →</span>
+        </div>
+      </a>
+
+      <!-- Collection 3: Boyfriend's Picks -->
+      <a href="boyfriend-finds.html" class="collection-card">
+        <div class="collection-image">
+          <div class="collection-number">03</div>
+          <img src="https://images.unsplash.com/photo-1581404917879-53e19259fdda?w=800&q=80" alt="Men grooming products">
+        </div>
+        <div class="collection-content">
+          <h3 class="collection-title">Boyfriend's Amazon Finds</h3>
+          <p class="collection-description">
+            He tested, I approved. The grooming, gadgets and everyday essentials worth adding to your cart — for him (or you).
+          </p>
+          <span class="collection-link">See his picks →</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       PHILOSOPHY QUOTE
+       ============================================ -->
+  <section class="philosophy">
+    <div class="philosophy-content">
+      <p class="philosophy-quote">
+        "I only share what I would truly buy again. No hype, no fluff — just the gems that earned their place in my routine."
+      </p>
+      <p class="philosophy-signature">— Pamela</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FEATURED / INSTAGRAM-STYLE GRID
+       ============================================ -->
+  <section class="featured">
+    <div class="section-header" style="padding: 0 2rem;">
+      <div class="section-eyebrow">As Seen On</div>
+      <h2 class="section-title">The <em>Beauty</em> Journal</h2>
+    </div>
+    <div class="featured-grid">
+      <!-- Replace these with your real Instagram/Pinterest shots -->
+      <div class="featured-item"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500&q=80" alt="Featured beauty moment"></div>
+      <div class="featured-item"><img src="https://images.unsplash.com/photo-1522335789203-aaa88dce66b6?w=500&q=80" alt="Featured beauty moment"></div>
+      <div class="featured-item"><img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=500&q=80" alt="Featured beauty moment"></div>
+      <div class="featured-item"><img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500&q=80" alt="Featured beauty moment"></div>
+      <div class="featured-item"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&q=80" alt="Featured beauty moment"></div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       NEWSLETTER
+       ============================================ -->
+  <section class="newsletter">
+    <div class="newsletter-content">
+      <div class="section-eyebrow">Join the List</div>
+      <h2 class="newsletter-title">Beauty <em>Gems</em> in Your Inbox</h2>
+      <p class="newsletter-description">New finds, exclusive edits, and the occasional secret sale. Straight to you.</p>
+
+      <!-- ============================================
+           MAILCHIMP FORM
+           Yerdi: Replace the entire <form> below with the code
+           Mailchimp gives you when you create your form.
+           Paste it right here between the comments.
+           ============================================ -->
+      <form class="newsletter-form" action="#" method="post" novalidate>
+        <input type="email" name="EMAIL" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <!-- ============================================
+           END MAILCHIMP FORM
+           ============================================ -->
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-brand">
+        <h3>Pamela's <span>Beauty</span> Gems</h3>
+        <p>A curated edit of luxury and drugstore beauty, tested and trusted. Your signature glow, one gem at a time.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="routine.html">Beauty Routine</a></li>
+          <li><a href="amazon-finds.html">Amazon Finds</a></li>
+          <li><a href="boyfriend-finds.html">Boyfriend's Picks</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="https://www.amazon.com/shop/influencer-0522aeb1?ref_=cm_sw_r_cp_ud_aipsfshop_0G0ZXW45WKN1PTJDD40Y_1" target="_blank" rel="noopener">Amazon Storefront</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Pinterest</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">About Pamela</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Pamela's Beauty Gems. All rights reserved.</p>
+      <p class="footer-disclaimer">As an Amazon Associate I earn from qualifying purchases.</p>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       MINIMAL JAVASCRIPT
+       ============================================ -->
+  <script>
+    // Mobile menu toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Nav background intensifies on scroll
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.style.boxShadow = '0 2px 20px rgba(61, 40, 23, 0.08)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
